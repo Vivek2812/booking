@@ -2,7 +2,6 @@ package api.payload;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;
-import lombok.Setter;
 import lombok.extern.jackson.Jacksonized;
 
 @Jacksonized
@@ -32,6 +31,17 @@ public class BookingRequest {
                 .firstmane("raj")
                 .lastname("bhat")
                 .totalprice(100)
+                .depositpaid(true)
+                .bookingdates(BookingDates.builder().checkin("2018-01-01").checkout("2018-01-01").build())
+                .additionalneeds("None")
+                .build();
+    }
+
+    public static BookingRequest updateBookingRequestPayload(){
+        return BookingRequest.builder()
+                .firstmane("raj")
+                .lastname("bhat")
+                .totalprice(1000)
                 .depositpaid(true)
                 .bookingdates(BookingDates.builder().checkin("2018-01-01").checkout("2018-01-01").build())
                 .additionalneeds("None")

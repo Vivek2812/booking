@@ -4,6 +4,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import static api.payload.BookingRequest.createBookingRequestPayload;
+import static api.payload.BookingRequest.updateBookingRequestPayload;
 import static io.restassured.RestAssured.given;
 import static util.ApiEndPoints.BASE_URL;
 import static util.ApiEndPoints.BOOKING_ENDPOINT;
@@ -28,5 +29,15 @@ public class BookingApi {
                 .accept("application/json")
                 .when()
                 .get(END_POINT + bookingid);
+    }
+
+    public static Response updateBooking(int bookingid, String token){
+        return given()
+                .contentType(ContentType.JSON)
+                .accept("application/json")
+                .header("Cookie","token=" + token)
+                .body(updateBookingRequestPayload())
+                .when()
+                .put(END_POINT + bookingid);
     }
 }
